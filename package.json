@@ -1,0 +1,17 @@
+{
+  "name": "com.a9.language",
+  "version": "1.0.1",
+  "description": "Language",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyhzz/com.a9.language.git"
+  },
+  "author": "A9019",
+  "keywords": [
+    "git",
+    "editor"
+  ],
+  "displayName": "Language Extension",
+  "unity": "2020.3"
+}
