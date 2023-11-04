@@ -23,6 +23,7 @@ namespace Com.A9.Language
                 Debug.LogWarning(st + " is not in dictionary");
                 return st;
             }
+
             return result;
         }
         public static string Localize(this string st, string dic_type = "Common")
@@ -30,14 +31,17 @@ namespace Com.A9.Language
             if (st == null)
                 return "error";
             if (CommonLanguage.dics.ContainsKey(dic_type))
-                return st.GetLang(CommonLanguage.dics[dic_type], CommonLanguage.language);
+            {
+                var str = st.GetLang(CommonLanguage.dics[dic_type], CommonLanguage.language);
+                return str.Replace("<br>", "\n");
+            }
             else
             {
                 Debug.Log("Dictionary " + dic_type.ToString() + " is not loaded");
                 return st;
             }
         }
-         public static string CapitalCHS(this string st, int start_size)
+        public static string CapitalCHS(this string st, int start_size)
         {
             if (CommonLanguage.language != Language.CHS)
             {
