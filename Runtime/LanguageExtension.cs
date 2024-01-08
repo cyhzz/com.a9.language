@@ -18,11 +18,14 @@ namespace Com.A9.Language
             //Load current dictioinary value into skills
             if (grammar != null)
                 grammar.TryGetValue(st, out result);
+
+            #if UNITY_EDITOR
             if (result == null)
             {
                 Debug.LogWarning(st + " is not in dictionary");
                 return st;
             }
+            #endif
 
             return result;
         }
