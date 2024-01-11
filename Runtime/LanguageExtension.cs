@@ -19,13 +19,13 @@ namespace Com.A9.Language
             if (grammar != null)
                 grammar.TryGetValue(st, out result);
 
-#if UNITY_EDITOR
             if (result == null)
             {
+#if UNITY_EDITOR
                 Debug.LogWarning(st + " is not in dictionary");
+#endif
                 return st;
             }
-#endif
             return result;
         }
         public static string Localize(this string st, string dic_type = "Common")
