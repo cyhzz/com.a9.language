@@ -26,8 +26,6 @@ namespace Com.A9.Language
                 return st;
             }
 #endif
-            Debug.LogError(grammar);
-            Debug.LogError(result);
             return result;
         }
         public static string Localize(this string st, string dic_type = "Common")
@@ -37,6 +35,10 @@ namespace Com.A9.Language
             if (CommonLanguage.dics.ContainsKey(dic_type))
             {
                 var str = st.GetLang(CommonLanguage.dics[dic_type], CommonLanguage.language);
+                if (str == null)
+                {
+                    Debug.LogError(st);
+                }
                 return str.Replace("<br>", "\n");
             }
             else
