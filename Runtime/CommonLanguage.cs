@@ -25,12 +25,14 @@ namespace Com.A9.Language
         //list of dictionraies
         public static string path = "Language/";
         public static bool LoadByXml = false;
+        public static bool recordArchive = false;
 
         public static Language language = Language.CHS;
         public static Dictionary<string, Dictionary<Language, Dictionary<string, string>>> dics
             = new Dictionary<string, Dictionary<Language, Dictionary<string, string>>>();
 
         public static Dictionary<Language, Dictionary<string, string>> xml_dics = new Dictionary<Language, Dictionary<string, string>>();
+        public static List<string> queries = new List<string>();
 
         static CommonLanguage()
         {

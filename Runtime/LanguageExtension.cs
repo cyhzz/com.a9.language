@@ -34,6 +34,14 @@ namespace Com.A9.Language
             if (st == null)
                 return "error";
 
+            if (CommonLanguage.recordArchive)
+            {
+                if (CommonLanguage.queries.Contains(st) == false)
+                {
+                    CommonLanguage.queries.Add(st);
+                }
+            }
+
             if (CommonLanguage.LoadByXml)
             {
                 if (CommonLanguage.xml_dics.ContainsKey(CommonLanguage.language))
