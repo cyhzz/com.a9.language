@@ -38,8 +38,15 @@ namespace Com.A9.Language
             {
                 if (CommonLanguage.xml_dics.ContainsKey(CommonLanguage.language))
                 {
-                    var str = CommonLanguage.xml_dics[CommonLanguage.language][st];
-                    return str.Replace("<br>", "\n");
+                    var db = CommonLanguage.xml_dics[CommonLanguage.language];
+                    if (db.ContainsKey(st))
+                    {
+                        return db[st].Replace("<br>", "\n");
+                    }
+                    else
+                    {
+                        return st.Replace("<br>", "\n");
+                    }
                 }
                 else
                 {
