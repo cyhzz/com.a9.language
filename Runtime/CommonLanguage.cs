@@ -45,7 +45,7 @@ namespace Com.A9.Language
             xml_dics.Add(Language.EN, new Dictionary<string, string>());
             xml_dics.Add(Language.CHS, new Dictionary<string, string>());
 
-            var list = Resources.Load<LanguageTable>("GameData/");
+            var list = Resources.Load<LanguageTable>("GameData/LanguageTable");
             foreach (var item in list.items)
             {
                 xml_dics[Language.EN].Add(item.id, item.EN);
