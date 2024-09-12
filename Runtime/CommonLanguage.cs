@@ -68,6 +68,25 @@ namespace Com.A9.Language
             xmlReader.SaveAsJson("LocalizeArchive.json", queries);
         }
 
+        public static void ExportUnusedColumns()
+        {
+            List<string> unused = new List<string>();
+            foreach (var item in xml_dics)
+            {
+                foreach (var s in item.Value)
+                {
+                    if (!queries.Contains(s.Key))
+                    {
+                        if (unused.Contains(s.Key) == false)
+                        {
+                            unused.Add(s.Key);
+                        }
+                    }
+                }
+            }
+            xmlReader.SaveAsXml("UnusedColumns.xlsx", unused);
+        }
+
         public static Dictionary<Language, Dictionary<string, string>> GetDictionary(string path)
         {
             Dictionary<Language, Dictionary<string, string>> dic = new Dictionary<Language, Dictionary<string, string>>();
