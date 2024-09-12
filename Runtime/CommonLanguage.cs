@@ -55,21 +55,24 @@ namespace Com.A9.Language
                 xml_dics[Language.CHS].Add(item.id, item.CHS);
             }
 
+#if UNITY_EDITOR
             List<string> que = new List<string>();
             xmlReader.ReadJson<List<string>>("LocalizeArchive.json", out que);
             if (que != null)
             {
                 queries = que;
             }
+#endif
         }
-
-        public static void ExportQueries()
+#if UNITY_EDITOR
+        static void ExportQueries()
         {
             xmlReader.SaveAsJson("LocalizeArchive.json", queries);
         }
 
         public static void ExportUnusedColumns()
         {
+            ExportQueries();
             List<string> unused = new List<string>();
             foreach (var item in xml_dics)
             {
@@ -86,7 +89,7 @@ namespace Com.A9.Language
             }
             xmlReader.SaveAsXml("UnusedColumns.xlsx", unused);
         }
-
+#endif
         public static Dictionary<Language, Dictionary<string, string>> GetDictionary(string path)
         {
             Dictionary<Language, Dictionary<string, string>> dic = new Dictionary<Language, Dictionary<string, string>>();

@@ -33,7 +33,7 @@ namespace Com.A9.Language
         {
             if (st == null)
                 return "error";
-
+#if UNITY_EDITOR
             if (CommonLanguage.recordArchive)
             {
                 if (CommonLanguage.queries.Contains(st) == false)
@@ -41,7 +41,7 @@ namespace Com.A9.Language
                     CommonLanguage.queries.Add(st);
                 }
             }
-
+#endif
             if (CommonLanguage.LoadByXml)
             {
                 if (CommonLanguage.xml_dics.ContainsKey(CommonLanguage.language))
