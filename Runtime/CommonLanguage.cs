@@ -56,7 +56,7 @@ namespace Com.A9.Language
             }
 
             List<string> que = new List<string>();
-            xmlReader.ReadJson<List<string>>("GameData/LocalizeArchive", out que);
+            xmlReader.ReadJson<List<string>>("LocalizeArchive.json", out que);
             if (que != null)
             {
                 queries = que;
@@ -65,7 +65,7 @@ namespace Com.A9.Language
 
         public static void ExportQueries()
         {
-            xmlReader.SaveAsJson("GameData/LocalizeArchive", queries);
+            xmlReader.SaveAsJson("LocalizeArchive.json", queries);
         }
 
         public static Dictionary<Language, Dictionary<string, string>> GetDictionary(string path)
