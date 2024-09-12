@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Com.A9.FileReader;
 using LumenWorks.Framework.IO.Csv;
 using UnityEngine;
 namespace Com.A9.Language
@@ -53,6 +54,18 @@ namespace Com.A9.Language
                 xml_dics[Language.EN].Add(item.id, item.EN);
                 xml_dics[Language.CHS].Add(item.id, item.CHS);
             }
+
+            List<string> que = new List<string>();
+            xmlReader.ReadJson<List<string>>("GameData/LocalizeArchive", out que);
+            if (que != null)
+            {
+                queries = que;
+            }
+        }
+
+        public static void ExportQueries()
+        {
+            xmlReader.SaveAsJson("GameData/LocalizeArchive", queries);
         }
 
         public static Dictionary<Language, Dictionary<string, string>> GetDictionary(string path)
