@@ -7,6 +7,7 @@ using LumenWorks.Framework.IO.Csv;
 using UnityEngine;
 namespace Com.A9.Language
 {
+    [System.Serializable]
     public class LanguageTableItem
     {
         public string id;
