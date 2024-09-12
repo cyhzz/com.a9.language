@@ -1,3 +1,16 @@
 {
-	"name": "Com.A9.Language"
+    "name": "Com.A9.Language",
+    "rootNamespace": "",
+    "references": [
+        "GUID:77112220b825f438bbd7a19f736a888d"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

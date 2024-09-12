@@ -28,21 +28,39 @@ namespace Com.A9.Language
             }
             return result;
         }
+
         public static string Localize(this string st, string dic_type = "Common")
         {
             if (st == null)
                 return "error";
-            if (CommonLanguage.dics.ContainsKey(dic_type))
+
+            if (CommonLanguage.LoadByXml)
             {
-                var str = st.GetLang(CommonLanguage.dics[dic_type], CommonLanguage.language);
-                return str.Replace("<br>", "\n");
+                if (CommonLanguage.xml_dics.ContainsKey(CommonLanguage.language))
+                {
+                    var str = CommonLanguage.xml_dics[CommonLanguage.language][st];
+                    return str.Replace("<br>", "\n");
+                }
+                else
+                {
+                    return st;
+                }
             }
             else
             {
-                Debug.Log("Dictionary " + dic_type.ToString() + " is not loaded");
-                return st;
+                if (CommonLanguage.dics.ContainsKey(dic_type))
+                {
+                    var str = st.GetLang(CommonLanguage.dics[dic_type], CommonLanguage.language);
+                    return str.Replace("<br>", "\n");
+                }
+                else
+                {
+                    Debug.Log("Dictionary " + dic_type.ToString() + " is not loaded");
+                    return st;
+                }
             }
         }
+
         public static string CapitalCHS(this string st, int start_size)
         {
             if (CommonLanguage.language != Language.CHS)

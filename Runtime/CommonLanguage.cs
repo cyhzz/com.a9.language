@@ -7,6 +7,13 @@ using LumenWorks.Framework.IO.Csv;
 using UnityEngine;
 namespace Com.A9.Language
 {
+    public class LanguageTableItem
+    {
+        public string id;
+        public string EN;
+        public string CHS;
+    }
+
     [System.Serializable]
     public enum Language
     {
@@ -16,9 +23,13 @@ namespace Com.A9.Language
     {
         //list of dictionraies
         public static string path = "Language/";
+        public static bool LoadByXml = false;
+
         public static Language language = Language.CHS;
         public static Dictionary<string, Dictionary<Language, Dictionary<string, string>>> dics
             = new Dictionary<string, Dictionary<Language, Dictionary<string, string>>>();
+
+        public static Dictionary<Language, Dictionary<string, string>> xml_dics = new Dictionary<Language, Dictionary<string, string>>();
 
         static CommonLanguage()
         {
@@ -28,6 +39,16 @@ namespace Com.A9.Language
             {
                 Dictionary<Language, Dictionary<string, string>> new_dic = GetDictionary(path + txts[i].name);
                 dics.Add(txts[i].name, new_dic);
+            }
+
+            xml_dics.Add(Language.EN, new Dictionary<string, string>());
+            xml_dics.Add(Language.CHS, new Dictionary<string, string>());
+
+            var list = Resources.Load<LanguageTable>("GameData/");
+            foreach (var item in list.items)
+            {
+                xml_dics[Language.EN].Add(item.id, item.EN);
+                xml_dics[Language.CHS].Add(item.id, item.CHS);
             }
         }
 
