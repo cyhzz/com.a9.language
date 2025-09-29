@@ -2,7 +2,10 @@
     "name": "Com.A9.Language",
     "rootNamespace": "",
     "references": [
-        "GUID:77112220b825f438bbd7a19f736a888d"
+        "GUID:77112220b825f438bbd7a19f736a888d",
+        "GUID:6383c131ba3704ace80f926856de2869",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:8a65b104d2cf848c7a5178a1fe80efc4"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
