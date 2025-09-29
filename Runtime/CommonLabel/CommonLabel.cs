@@ -8,10 +8,12 @@ using UnityEngine.UI;
 public class CommonLabel : MonoBehaviour
 {
     TMP_Text lb;
+    Text lbt;
 
     void Start()
     {
         lb = GetComponent<TMP_Text>();
+        lbt = GetComponent<Text>();
         LangCtrl.OnLangChange += ChangeText;
         ChangeText();
     }
@@ -26,6 +28,10 @@ public class CommonLabel : MonoBehaviour
         if (lb)
         {
             lb.text = name.Localize();
+        }
+        if (lbt)
+        {
+            lbt.text = name.Localize();
         }
     }
 }
