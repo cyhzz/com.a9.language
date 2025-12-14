@@ -13,6 +13,14 @@ namespace Com.A9.Language
         public List<LanguageTableItem> items = new List<LanguageTableItem>();
 
 #if UNITY_EDITOR
+
+        [MenuItem("DB/Language")]
+        public static void GenerateBoxMatrixMenu()
+        {
+            var list = Resources.Load<LanguageTable>("GameData/LanguageTable");
+            list.Read();
+        }
+
         [ContextMenu("Read")]
         public void Read()
         {

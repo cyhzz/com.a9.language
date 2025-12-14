@@ -35,8 +35,12 @@ namespace Com.A9.Language
         public static Dictionary<Language, Dictionary<string, string>> xml_dics = new Dictionary<Language, Dictionary<string, string>>();
         public static List<string> queries = new List<string>();
 
-        static CommonLanguage()
+        [RuntimeInitializeOnLoadMethod]
+        static void Initialize()
         {
+            xml_dics.Clear();
+            queries.Clear();
+            dics.Clear();
             //dictionary = xmlReader.GetDictionary("Common/Lang");
             TextAsset[] txts = Resources.LoadAll<TextAsset>(path);
             for (int i = 0; i < txts.Length; i++)
@@ -65,6 +69,8 @@ namespace Com.A9.Language
 #endif
         }
 #if UNITY_EDITOR
+
+
         static void ExportQueries()
         {
             xmlReader.SaveAsJson("LocalizeArchive.json", queries);
